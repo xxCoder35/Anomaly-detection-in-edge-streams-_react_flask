@@ -48,7 +48,7 @@ render()
 
              </Grid>
          </Grid>
-         <Button variant="raised" component="span" onClick={this.attack} style={{left:200,}}>
+         <Button variant='outlined' component="span" onClick={this.attack} style={{left:300,marginBottom:10,background:'#C3C2DA',}}>
                                Empoisonner
          </Button>
 

@@ -188,21 +188,21 @@ class Main extends React.Component {
                         style={{ color: 'white' , fontSize: 30 }}
                         />
                     </ListItemIcon>
-                    <ListItemText primary="Visualiser le stream" />
+                    <ListItemText primary="Visualiser le stream" style={{ color: 'white' , fontSize: 30 ,fontWeight:'bold' }} />
                     </ListItem>
                     <ListItem button className={classes.btn} onClick={()=>{this.handler(1)}} >
                     <ListItemIcon>
                         <AutorenewIcon
                        style={{ color: 'white' , fontSize: 30 }}  />
                     </ListItemIcon>
-                    <ListItemText primary="Empoisonner & Exécuter" />
+                    <ListItemText primary="Empoisonner & Exécuter" style={{ color: 'white' , fontSize: 30 ,fontWeight:'bold',fontFamily: 'Arial', }}/>
                     </ListItem>
                     <ListItem button className={classes.btn} onClick={()=>{this.handler(2)}} >
                     <ListItemIcon>
                         <InfoIcon
                         style={{ color: 'white' , fontSize: 30 }}  />
                     </ListItemIcon>
-                    <ListItemText primary="Informations" style={{ color: 'white' , fontSize: 30 }} />
+                    <ListItemText primary="Informations" style={{ color: 'white' , fontSize: 30 ,fontWeight:'bold' }} />
                     </ListItem>
 
                   </Drawer>

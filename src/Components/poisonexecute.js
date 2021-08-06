@@ -97,9 +97,18 @@ constructor(props) {
     {
     console.log("fade is called!")
     }
-    Fade_Am_call()
+    async Fade_Am_call()
     {
     console.log("fade amelioree is called!")
+    const response = await fetch('/resultats');
+    if (response.ok) {
+            // if HTTP-status is 200-299
+            // get the response body (the method explained below)
+           const json = await response.json();
+         }
+    else {
+           alert("HTTP-Error: " + response.status);
+          }
     }
 
     render(){
