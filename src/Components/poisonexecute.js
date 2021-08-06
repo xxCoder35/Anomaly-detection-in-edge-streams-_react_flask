@@ -93,22 +93,52 @@ constructor(props) {
         console.log(this.state.open)
     };
 
-    Fade_simple_call()
+   async Fade_simple_call()
     {
     console.log("fade is called!")
-    }
-    async Fade_Am_call()
-    {
-    console.log("fade amelioree is called!")
-    const response = await fetch('/resultats');
+    console.log(this.state.fileName);
+    const state_JSON = JSON.stringify({'amelioree':0,'file': "./data/"+this.state.fileName});
+
+    const response = await fetch('/resultats',{
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+        body: state_JSON,
+      });
     if (response.ok) {
             // if HTTP-status is 200-299
             // get the response body (the method explained below)
            const json = await response.json();
+           console.log(json)
          }
     else {
            alert("HTTP-Error: " + response.status);
           }
+
+    }
+    async Fade_Am_call()
+    {
+    console.log(this.state.fileName);
+    const state_JSON = JSON.stringify({'amelioree':1,'file': "./data/"+this.state.fileName});
+
+    const response = await fetch('/resultats',{
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+        body: state_JSON,
+      });
+    if (response.ok) {
+            // if HTTP-status is 200-299
+            // get the response body (the method explained below)
+           const json = await response.json();
+           console.log(json)
+         }
+    else {
+           alert("HTTP-Error: " + response.status);
+          }
+
     }
 
     render(){

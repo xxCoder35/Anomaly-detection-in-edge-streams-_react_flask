@@ -27,7 +27,7 @@ class FilePicker extends React.Component{
      super(props)
      this.state={
          poison : false,
-         filename : " ",
+         filename : "a",
          upload : <GetAppIcon/>,
 
         };
@@ -35,9 +35,14 @@ class FilePicker extends React.Component{
 
       };
     handleChange(selectorFiles: FileList)
-    {
-        this.props.parentCall(this.state.filename);
-        this.setState({ upload : <CheckCircleSharpIcon style={{ color: '#08ED00' }}/>})
+    {  const name=selectorFiles[0].name
+
+        this.setState({filename : name}, () => {
+           console.log(this.state.filename);
+           this.props.parentCall(this.state.filename);
+           this.setState({ upload : <CheckCircleSharpIcon style={{ color: '#08ED00' }}/>})
+         });
+
     }
 
 
