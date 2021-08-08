@@ -17,6 +17,6 @@ def get_resultat():
 def get_fileName():
     #get the request from frontend
     _req = request.get_json()
-    res=(sw.switch((_req)))
+    res=(sw.attaquer(_req))
     return (jsonify(res)) # return a json respecting the format of resultats.json
 
