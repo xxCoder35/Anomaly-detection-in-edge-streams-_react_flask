@@ -10,30 +10,35 @@ class draww():
         self.curr_time = None
 if __name__ == "__main__":
     file_name="../data/4_poisoned.txt"
-    g = net.MultiDiGraph()
-    g1 = net.MultiDiGraph()
+
+    i = 0
+    N = 5 #nombre de captures
+    t_init = 15 #instant debut
+    t_end = 159 #Fin
+    delai = 5
+    g = [net.MultiDiGraph() for i in range(N)]
 
     with open(file_name, 'r') as dataset:
       for LINE in dataset:
         line = LINE.split(' ')
-        if( float(line[0])<160):
-            s_id = int(line[1])
-            d_id = int(line[2])
-            g.add_nodes_from([s_id, d_id])
-            g.add_edge(s_id,d_id,color='g')
-            g1.add_edge(s_id, d_id, color='g')
-        else:
-            if ((int(line[0]) < 300)):
-                if((s_id, d_id) in g1.edges()):
-                    g1.remove_edge(s_id, d_id)
-                g1.add_nodes_from([s_id, d_id])
-                g1.add_edge(s_id, d_id, color='r')
+        idx = (int(line[0]) - t_init )// delai
+        s_id = int(line[1])
+        d_id = int(line[2])
+        for i in range(idx,N):
+            if (i==idx):
+                print('green')
+                if((s_id,d_id) in g[i].edges()):
+                    print('deleted')
+                    g[i].remove_edge(s_id,d_id)
+                g[i].add_edge(s_id, d_id, color='g')
+            else :
+                g[i].add_edge(s_id, d_id, color='b')
+    for i in range(N) :
+           plt.clf()
+           print(g[i].edges())
+           colors = net.get_edge_attributes(g[i], 'color').values()
+           net.draw(g[i], with_labels=True, edge_color=colors)
+           plt.savefig("../graphs/graphe" + str(i) + ".png")
 
-    colors = net.get_edge_attributes(g,'color').values()
 
-    net.draw(g,with_labels = True, edge_color=colors)
-    plt.savefig("../graphs/four_grids1.png")
-    plt.clf()
-    colors1 = net.get_edge_attributes(g1, 'color').values()
-    net.draw(g1, with_labels=True, edge_color=colors1)
-    plt.savefig("../graphs/four_grids2.png")
+
