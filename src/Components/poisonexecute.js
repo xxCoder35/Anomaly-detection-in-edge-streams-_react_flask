@@ -106,7 +106,6 @@ constructor(props) {
          this.setState({ fileName : file})
     }
     getFileName = (childData) =>{
-        console.log("im called file")
         this.setState({ fileName : childData})
     }
     handlePoisonerOpen(){

@@ -11,18 +11,18 @@ def hello_world():
 def get_resultat():
     #get the request from frontend
     _req = request.get_json()
-    res=(sw.switch((_req)))
+    res = (sw.switch((_req)))
     return (jsonify(res)) # return a json respecting the format of resultats.json
 @app.route('/poisoned',methods=['POST'])
 def get_fileName():
     #get the request from frontend
     _req = request.get_json()
-    res=(sw.attaquer(_req))
+    res = (sw.attaquer(_req))
     return (jsonify(res)) # return a json respecting the format of resultats.json
 @app.route('/stream_viz',methods=['POST'])
 def show():
     #get the request from frontend
     _req = request.get_json()
-    res=(sw.visualize(_req))
+    res = (sw.visualize(_req))
     return (jsonify(res)) # return a json respecting the format of resultats.json
 

@@ -83,11 +83,7 @@ console.log(this.state)
 }
 async attack()
     {
-     console.log("iwas clicked");
      this.setState({ poison : true ,openP:true});
-
-
-
     };
 render()
 {  const {classes} = this.props
