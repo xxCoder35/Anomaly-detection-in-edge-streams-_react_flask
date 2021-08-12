@@ -15,13 +15,19 @@ def draw_stream(stream_file_name, t_init, t_end, len_capture):
             d_id = int(line[2])
             for i in range(idx, N):
                 if (i == idx):
-
                     if ((s_id, d_id) in g[i].edges()):
-
                         g[i].remove_edge(s_id, d_id)
-                    g[i].add_edge(s_id, d_id, color='g')
+                    if (int(line[3])==0):
+                        g[i].add_edge(s_id, d_id, color='g')
+                    else :
+                        g[i].add_edge(s_id, d_id, color='r')
+
                 else:
-                    g[i].add_edge(s_id, d_id, color='b')
+                    if (int(line[3]) == 0):
+                        g[i].add_edge(s_id, d_id, color='b')
+                    else:
+                        g[i].add_edge(s_id, d_id, color='r')
+
     for i in range(N):
         plt.clf()
         colors = net.get_edge_attributes(g[i], 'color').values()

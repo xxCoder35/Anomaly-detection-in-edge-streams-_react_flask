@@ -55,7 +55,7 @@ return(
                   <input accept="text/*" style={{ display:'none' }}  id="raised-button-file" multiple type="file" onChange={(e) => this.handleChange(e.target.files) } />
                    <label htmlFor="raised-button-file">
                    <Button variant="raised" component="span" startIcon={this.state.upload} className={classes.button}>
-                        Upload
+                        Importer
                    </Button>
                    </label>
               </div>

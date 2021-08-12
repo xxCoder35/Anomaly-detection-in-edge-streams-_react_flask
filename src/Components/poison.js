@@ -91,22 +91,23 @@ render()
         <div>
 
          <Grid container spacing={3} style={{ padding:20}}>
+
              <Grid item xs={12} sm={3}>
-                <TextField required id="outlined-number" label="source node" type="number" InputLabelProps={{shrink: true,}} onChange={this._handleSrcField} variant="outlined"/>
+                <TextField required id="outlined-number" label="noeud source" type="number" InputLabelProps={{shrink: true,}} onChange={this._handleSrcField} variant="outlined"/>
 
 
              </Grid>
               <Grid item xs={12} sm={3}>
-                <TextField required id="outlined-number" label="destination node" type="number" InputLabelProps={{shrink: true,}} onChange={this._handleDestField} variant="outlined"/>
+                <TextField required id="outlined-number" label="noeud destination" type="number" InputLabelProps={{shrink: true,}} onChange={this._handleDestField} variant="outlined"/>
 
              </Grid>
                <Grid item xs={12} sm={3}>
-                <TextField required id="outlined-number" label="timestamp" type="number" InputLabelProps={{shrink: true,}} onChange={this._handleTimeField} variant="outlined"/>
+                <TextField required id="outlined-number" label="instant d'insertion" type="number" InputLabelProps={{shrink: true,}} onChange={this._handleTimeField} variant="outlined"/>
 
 
              </Grid>
               <Grid item xs={12} sm={3}>
-                <TextField required id="outlined-number" label="poison size" type="number" InputLabelProps={{shrink: true,}} variant="outlined" onChange={this._handleSizeField}/>
+                <TextField required id="outlined-number" label="nombre d'aretes à injecter" type="number" InputLabelProps={{shrink: true,}} variant="outlined" onChange={this._handleSizeField}/>
 
 
              </Grid>

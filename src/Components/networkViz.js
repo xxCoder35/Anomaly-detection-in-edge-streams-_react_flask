@@ -57,8 +57,7 @@ closeImageViewer = () => {
   async attack(e)
     {
         e.preventDefault();
-        this.setState({isViewerOpen :true});
-        this.setState({currentImage :0});
+
         const state_JSON = JSON.stringify({'file': this.state.file, 'debut': this.state.debut, 'end': this.state.fin,'len': this.state.delai});
         const response = await fetch('/stream_viz',{
             headers: {
@@ -72,26 +71,26 @@ closeImageViewer = () => {
                 // get the response body (the method explained below)
                const json =  await response.json();
                this.setState({N :json['N']});
-               let images_i =[];
-               for (let i=0;i<json['N'];i++){
-                 images_i[i] = require('../graphs/graphe'+i.toString()+'.png').default;
-                 this.setState({images:images_i} );                                            }
 
+               let images_i =[];
+               for (let i=0;i< 3;i++){
+                images_i[i] = require('../graphs/graphe'+i.toString()+'.png').default;
+                                                      }
+
+               this.setState({images:images_i} , () => {
+               this.setState({isViewerOpen :true});
+
+});
              }
         else {
                alert("HTTP-Error: " + response.status);
               }
 
-
-
     };
 render()
 {
 const { classes } = this.props;
-let images_i =[];
-               for (let i=0;i<5;i++){
-                 images_i[i] = require('../graphs/graphe'+i.toString()+'.png').default;
-                                                          }
+
   return (
 
       <Card >
@@ -127,7 +126,7 @@ let images_i =[];
 
                      {this.state.isViewerOpen && (
                         <ImageViewer
-                          src={images_i}
+                          src={this.state.images}
                           currentIndex={this.state.currentImage}
                           disableScroll={ false }
                           onClose={ this.closeImageViewer}
