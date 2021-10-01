@@ -30,7 +30,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import InfoIcon from '@material-ui/icons/Info';
 import Poisonexecute from './poisonexecute'
-import Infos from './infos'
+import Info from './infos'
 const drawerWidth = 240;
 const styles = theme => ({
 
@@ -72,7 +72,7 @@ const styles = theme => ({
     flexShrink: 0,
   },
   drawerPaper: {
-   background: '#8094FF',
+   background: '#454555',
     width: drawerWidth,
   },
   drawerHeader: {
@@ -115,6 +115,7 @@ class Main extends React.Component {
     handler(i)  {
 
          this.setState({ panelidx: Number(i) })
+
 
        ;}
     handlemain()
@@ -223,14 +224,14 @@ class Main extends React.Component {
 
          <NetworkViz/>,
          <Poisonexecute/>,
-         <Infos/>,
+         <Info/>,
          <MainPage/>,
 
         ];
         const correctPanel = panels[s];
 
         return (
-            <div >
+            <div>
             {correctPanel}
             </div>
 

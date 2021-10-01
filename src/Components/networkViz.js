@@ -5,11 +5,29 @@ import FilePicker from './filePicker';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Divider from '@material-ui/core/Divider';
+import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Form from './form'
+const styles = theme => ({
+card: {
+    top:'20%',
+    left: '10%',
+    width:1200,
+    height:'auto',
+    minHeight:200,
+    position: 'absolute',
+    borderRadius: 40,
+    borderStyle:'solid' ,
+    border: '#9F9EA1',
+
+  },
+content:{
+
+},
+  });
 class NetworkViz extends React.Component{
       constructor(props) {
      super(props)
@@ -93,8 +111,8 @@ const { classes } = this.props;
 
   return (
 
-      <Card >
-                <CardContent >
+      <Card className={classes.card} >
+                <CardContent className={classes.content}>
                     <Typography >Importer un dataset</Typography>
                     <div >
                     <FilePicker parentCall={this.getFileName}/>
@@ -138,4 +156,4 @@ const { classes } = this.props;
 
   );
 }}
-export default NetworkViz;
+export default withStyles(styles)(NetworkViz);

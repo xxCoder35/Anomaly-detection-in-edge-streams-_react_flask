@@ -81,9 +81,12 @@ constructor(props) {
             fileName: " ",
             openP: false,
             anchorEl : null,
-            AUC : 0.0,
-            FNR : 0.0,
-            time : 0.0,
+            AUC_1 : 0.0,
+            FNR_1 : 0.0,
+            time_1 : 0.0,
+            AUC_2 : 0.0,
+            FNR_2 : 0.0,
+            time_2 : 0.0,
 
         }
 
@@ -130,9 +133,9 @@ constructor(props) {
             // if HTTP-status is 200-299
             // get the response body (the method explained below)
            const json = await response.json();
-           this.setState({AUC : json['AUC']});
-           this.setState({FNR : json['FPR']});
-           this.setState({time : json['time']});
+           this.setState({AUC_1 : json['AUC']});
+           this.setState({FNR_1 : json['FPR']});
+           this.setState({time_1 : json['time']});
            this.setState({ openP: true,});
          }
     else {
@@ -156,9 +159,9 @@ constructor(props) {
             // if HTTP-status is 200-299
             // get the response body (the method explained below)
            const json = await response.json();
-           this.setState({AUC : json['AUC']});
-           this.setState({FNR : json['FPR']});
-           this.setState({time : json['time']});
+           this.setState({AUC_2 : json['AUC']});
+           this.setState({FNR_2 : json['FPR']});
+           this.setState({time_2 : json['time']});
            this.setState({openP : true});
          }
     else {
@@ -216,9 +219,14 @@ constructor(props) {
 
                                 </MuiDialogTitle>
                                 <MuiDialogContent dividers>
-                                    <p>AUC = {this.state.AUC}</p>
-                                    <p>taux des faux negatifs = {this.state.FNR}</p>
-                                    <p>temps d execution = {this.state.time} secondes</p>
+                                    <p><b>AUC <u>F_Fade</u> </b> = {this.state.AUC_1}</p>
+                                    <p><b>Taux des faux negatifs <u>F_Fade</u> </b>= {this.state.FNR_1}</p>
+                                    <p><b> Temps d execution <u>F_Fade</u> </b> = {this.state.time_1} secondes</p>
+                                    <Divider />
+                                    <p><b> AUC <u> F_Fade ameliorée </u></b>= {this.state.AUC_2}</p>
+                                    <p><b>Taux des faux negatifs <u> F_Fade ameliorée </u></b>= {this.state.FNR_2}</p>
+                                    <p><b> Temps d execution <u> F_Fade ameliorée </u> </b>= {this.state.time_2} secondes</p>
+
                                 </MuiDialogContent>
                          </Dialog>
                     </Grid>

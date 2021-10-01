@@ -1,3 +1,5 @@
+import pandas as pd
+import numpy as np
 from Fade import *
 from Fade.lancer import lancer
 from Fade.attack import poison
@@ -17,5 +19,16 @@ def attaquer(dic):
 def visualize(dic):
     nb = draw_stream(dic['file'], int(dic['debut']), int(dic['end']), int(dic['len']))
     return {'N': nb}
+def get_dataset_infos(dic):
+
+    data = pd.read_csv(dic['file'],delimiter=" ")
+    # nodes number
+    src = data.iloc[:,1]
+    dest = data.iloc[:,2]
+    nodes = np.unique(np.concatenate((src, dest), 0))
+    edge = list(zip(src, dest))
+    res = list(set(edge))
+    return {'Nodes': len(nodes),'edges': len(res)}
+
 
 

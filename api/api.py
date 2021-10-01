@@ -26,3 +26,9 @@ def show():
     res = (sw.visualize(_req))
     return (jsonify(res)) # return a json respecting the format of resultats.json
 
+@app.route('/data_inf',methods=['POST'])
+def get_inf():
+    #get the request from frontend
+    _req = request.get_json()
+    res = (sw.get_dataset_infos(_req))
+    return (jsonify(res)) # return a json respecting the format of resultats.json
